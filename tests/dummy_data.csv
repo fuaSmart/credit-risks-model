@@ -1,0 +1,5 @@
+TransactionId,BatchId,AccountId,SubscriptionId,CustomerId,CurrencyCode,CountryCode,ProviderId,ProductId,ProductCategory,ChannelId,Amount,Value,TransactionStartTime,PricingStrategy,FraudResult
+TransactionId_1,BatchId_1,AccountId_1,SubscriptionId_1,C1,UGX,256,ProviderId_1,ProductId_1,airtime,ChannelId_3,-5000,5000,2025-08-10 10:00:00,4,0
+TransactionId_2,BatchId_2,AccountId_2,SubscriptionId_2,C2,UGX,256,ProviderId_2,ProductId_2,utility_bill,ChannelId_1,-10000,10000,2025-08-12 12:00:00,2,0
+TransactionId_3,BatchId_3,AccountId_1,SubscriptionId_1,C1,UGX,256,ProviderId_1,ProductId_1,airtime,ChannelId_3,-2000,2000,2025-08-15 14:00:00,4,0
+TransactionId_4,BatchId_4,AccountId_3,SubscriptionId_3,C3,UGX,256,ProviderId_3,ProductId_3,financial_services,ChannelId_3,-1500000,1500000,2025-08-16 18:00:00,2,1
