@@ -1,106 +1,95 @@
-# Enterprise-Grade Credit Risk Model for the BNPL Sector
+# Enterprise-Grade Credit Risk Model
 
-[![CI/CD Pipeline](https://github.com/fuaSmart/credit-risk-model/actions/workflows/ci_cd.yaml/badge.svg)](https://github.com/[your-username]/credit-risk-model/actions)
+[![CI Pipeline](https://github.com/[your-username]/credit-risk-model/actions/workflows/ci_cd.yaml/badge.svg)](https://github.com/[your-username]/credit-risk-model/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 1. Project Overview
 
-This project provides a robust, enterprise-grade machine learning solution for assessing credit risk in the Buy-Now-Pay-Later (BNPL) and financial services industry. The primary objective is to move beyond a simple proof-of-concept model and build a reliable, auditable, and maintainable system that can be trusted by financial stakeholders.
+This project delivers a complete, enterprise-grade machine learning system for assessing credit risk in the Buy-Now-Pay-Later (BNPL) sector. The primary objective was to move beyond a simple model and build a robust, reliable, and tangible solution that addresses a core financial business problem.
 
-The solution automates the prediction of transaction fraud and customer default probability, enabling businesses to minimize credit losses while safely maximizing customer approvals. It is built with a focus on professional software engineering practices, including comprehensive testing, CI/CD automation, and model explainability.
-
----
-
-## 2. The Business Problem
-
-In the fast-paced BNPL market, accurately assessing a customer's creditworthiness is critical. Inaccurate models lead to two major business costs:
-
-- **Credit Loss:** Approving loans for high-risk individuals who are likely to default.
-- **Missed Opportunity:** Denying loans to creditworthy individuals, resulting in lost revenue and poor customer experience.
-
-This project addresses this challenge by providing a consistent, data-driven, and transparent scoring system.
+The final system automates the prediction of transaction fraud by analyzing customer data and transaction patterns. The project culminates in an interactive dashboard that provides real-time risk assessments, making the model's insights accessible to non-technical users like loan officers.
 
 ---
 
-## 3. Key Features
+## 2. Key Features
 
-This project is designed to showcase a production-ready approach to machine learning:
+-   **📈 End-to-End ML Model:** A Logistic Regression model that achieved **100% recall** on fraudulent transactions in the test set, prioritizing risk mitigation.
+-   **⚙️ Modular ETL Pipeline:** Feature engineering logic is refactored into a clean, reusable Python script (`scripts/data_pipeline.py`).
+-   **🚀 Interactive Dashboard:** A web application built with Streamlit (`dashboard.py`) provides a user-friendly interface for real-time risk scoring.
+-   **✅ Comprehensive Unit Testing:** The data pipeline is validated with unit tests (`tests/`) to ensure correctness and reliability.
+-   **🤖 Automated CI Pipeline:** A GitHub Actions workflow automatically runs tests and linting on every commit, enforcing code quality.
+-   **🔍 Model Explainability:** A dedicated analysis (`notebooks/04_model_interpretation.ipynb`) using SHAP provides clear explanations for the model's predictions, building trust and transparency.
+-   **📦 Saved Model Artifacts:** The trained model, data scaler, and column order are saved as `.pkl` files, ready for deployment.
 
-- **📈 Hybrid ML Model:** A planned hybrid model combining the strengths of Graph Neural Networks (GNNs) for relational data and LightGBM for high-performance classification.
-- **⚙️ Automated ETL:** A modular PySpark data pipeline for processing raw transaction data into a clean, structured format.
-- **🚀 FastAPI Endpoint:** A production-ready API built with FastAPI and Pydantic for real-time, schema-validated risk scoring.
-- **✅ Comprehensive Testing:** Unit and integration tests written with `pytest` to ensure the reliability of data pipelines, features, and the API.
-- **🤖 CI/CD Automation:** A GitHub Actions workflow automates code quality checks (linting, formatting) and testing on every commit.
-- **🔍 Model Explainability:** Integration with SHAP to provide clear, visual explanations for model predictions, building trust with non-technical stakeholders.
-- **🏦 Financial Compliance:** Includes documentation templates for model governance, validation, and compliance mapping (e.g., Basel II/III), demonstrating an understanding of the regulatory environment.
+---
+
+## 3. Live Demo: Interactive Dashboard
+
+The final output of this project is a live, interactive dashboard. A user can input transaction details and receive an immediate risk assessment and recommendation.
+
+*(To add your screenshot here, upload the image to your GitHub repo, and then replace this text with: `![Dashboard Screenshot](link_to_your_image.png)`)*
+![Dashboard Screenshot](dashboard_screenshot.png) <!-- placeholder -->
 
 ---
 
 ## 4. Tech Stack
 
-- **Backend:** Python 3.9+, FastAPI, Uvicorn
-- **Data Science & ML:** Pandas, PySpark, Scikit-learn, LightGBM, MLflow, SHAP, EvidentlyAI
-- **Databases:** Delta Lake (for data pipeline)
-- **DevOps & Testing:** Docker, Pytest, GitHub Actions, Makefile
-- **Infrastructure (Planned):** Kubernetes (k8s), Seldon Core
+-   **Backend & Dashboard:** Python 3.9+, Streamlit, FastAPI
+-   **Data Science & ML:** Pandas, Scikit-learn, SHAP, Joblib
+-   **Development & Notebooks:** JupyterLab, Matplotlib, Seaborn
+-   **DevOps & Testing:** Pytest, GitHub Actions, Makefile, Flake8, Black
 
 ---
 
-## 5. Getting Started
+## 5. How to Run the Project
 
 ### Prerequisites
-
 - Python 3.9 or higher
 - `venv` for virtual environment management
 
 ### Installation & Setup
 
 1.  **Clone the repository:**
-
     ```bash
-    git clone https://github.com/fuaSmart/credit-risk-model.git
+    git clone https://github.com/[your-username]/credit-risk-model.git
     cd credit-risk-model
     ```
 
 2.  **Create and activate a virtual environment:**
-
     ```bash
     python3 -m venv .venv
     source .venv/bin/activate
     ```
 
-3.  **Install the required dependencies:**
+3.  **Install all required dependencies:**
     ```bash
-    pip install -r models/deployment/requirements.txt
-    pip install pytest flake8 black jupyterlab
+    pip install -r requirements.txt
     ```
 
----
+### Running the Core Scripts
 
-## 6. How to Use the Project
+1.  **Run the ETL pipeline to process data:**
+    ```bash
+    python scripts/data_pipeline.py
+    ```
 
-The `Makefile` provides convenient shortcuts for common tasks.
+2.  **Run the training script to train the model and save artifacts:**
+    ```bash
+    python scripts/train.py
+    ```
 
-- **Run all tests:**
+### Launching the Dashboard
 
-  ```bash
-  make test
-  ```
+After running the pipeline and training scripts, you can launch the interactive dashboard:
 
-- **Check code for style issues (linting):**
+```bash
+streamlit run dashboard.py
+```
 
-  ```bash
-  make lint
-  ```
+### Running Tests
 
-- **Automatically format the code:**
+The `Makefile` provides convenient shortcuts for quality checks:
 
-  ```bash
-  make format
-  ```
-
-- **Data Analysis & Model Training:**
-  All analysis and model development is done in the Jupyter Notebooks located in the `/notebooks` directory. Start the environment with:
-  ```bash
-  jupyter lab
-  ```
+-   **Run all tests:** `make test`
+-   **Check code for style issues:** `make lint`
+-   **Automatically format the code:** `make format`
