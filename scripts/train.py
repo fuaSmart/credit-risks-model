@@ -1,4 +1,3 @@
-
 import pandas as pd
 import joblib
 from pathlib import Path
@@ -15,14 +14,15 @@ MODEL_PATH = MODEL_OUTPUT_DIR / "logistic_regression_model.pkl"
 SCALER_PATH = MODEL_OUTPUT_DIR / "scaler.pkl"
 COLUMN_PATH = MODEL_OUTPUT_DIR / "model_columns.pkl"
 
+
 def train_and_save_artifacts():
     """Loads data, trains the model, and saves the artifacts."""
     print("Loading processed data...")
     df = pd.read_csv(PROCESSED_DATA_PATH)
 
     # 1. Define Features (X) and Target (y)
-    y = df['FraudResult']
-    X = df.drop(columns=['FraudResult', 'CustomerId'])
+    y = df["FraudResult"]
+    X = df.drop(columns=["FraudResult", "CustomerId"])
 
     # 2. Split Data
     X_train, X_test, y_train, y_test = train_test_split(
@@ -37,10 +37,10 @@ def train_and_save_artifacts():
 
     # 4. Train Model
     print("Training Logistic Regression model...")
-    model = LogisticRegression(class_weight='balanced', random_state=42, max_iter=1000)
+    model = LogisticRegression(class_weight="balanced", random_state=42, max_iter=1000)
     model.fit(X_train_scaled, y_train)
     print("Training complete.")
-    
+
     # 5. Evaluate and print report
     y_pred = model.predict(X_test_scaled)
     print("\n--- Model Evaluation Report ---")
@@ -50,7 +50,7 @@ def train_and_save_artifacts():
     # 6. Save Artifacts
     print("Saving model and scaler artifacts...")
     MODEL_OUTPUT_DIR.mkdir(exist_ok=True)
-    
+
     print("Saving model column order...")
     joblib.dump(X.columns.tolist(), COLUMN_PATH)
     print(f"Columns saved to: {COLUMN_PATH}")
@@ -63,4 +63,3 @@ def train_and_save_artifacts():
 
 if __name__ == "__main__":
     train_and_save_artifacts()
-
