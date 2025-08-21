@@ -1,0 +1,36 @@
+# --- Core API ---
+fastapi>=0.68.0
+uvicorn>=0.15.0
+pydantic>=1.8.0
+httpx 
+
+# --- Data Science & ML ---
+pandas>=1.3.0
+scikit-learn>=1.0
+lightgbm>=3.2.1
+jupyterlab 
+matplotlib
+seaborn
+
+# --- Data Pipeline ---
+pyspark>=3.1.0
+delta-spark>=1.0.0
+
+# --- MLOps & Advanced Features ---
+mlflow>=1.20.2      
+aequitas            
+evidently           
+networkx            
+fredapi             
+web3                
+
+# --- Development & Testing ---
+pytest
+flake8
+black
+
+ # For model explainability
+shap>=0.40.0       
+
+# --- Dashboarding ---
+streamlit>=1.12.0

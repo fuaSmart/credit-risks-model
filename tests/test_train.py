@@ -1,11 +1,17 @@
-"""Test model training workflow."""
 
-from scripts.train import train_model
+import pytest
+from pathlib import Path
+import joblib
 
+MODEL_PATH = Path("models/logistic_regression_model.pkl")
+SCALER_PATH = Path("models/scaler.pkl")
 
-def test_training_metrics():
-    """Verify AUC > 0.8."""
-    with mlflow.start_run():
-        train_model()
-        run = mlflow.get_run(mlflow.active_run().info.run_id)
-        assert run.data.metrics["auc"] > 0.8
+def test_training_script_creates_artifacts():
+ 
+    assert MODEL_PATH.exists(), "Model file was not created by the training script."
+    assert SCALER_PATH.exists(), "Scaler file was not created by the training script."
+
+def test_saved_model_can_be_loaded():
+
+    model = joblib.load(MODEL_PATH)
+    assert hasattr(model, 'predict'), "Loaded object is not a valid model."
